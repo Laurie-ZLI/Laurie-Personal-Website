@@ -14,221 +14,139 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
             color: #333;
-            background: linear-gradient(135deg, #f7f9fc, #dce7f2);
-        }
-
-        /* 顶部导航栏 */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: #0077b5;
-            color: white;
-            padding: 10px 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-        }
-
-        .navbar h1 {
-            font-size: 1.5rem;
-            display: inline-block;
-        }
-
-        .navbar ul {
-            list-style: none;
-            display: inline-block;
-            float: right;
-        }
-
-        .navbar ul li {
-            display: inline-block;
-            margin: 0 15px;
-        }
-
-        .navbar ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-
-        .navbar ul li a:hover {
-            text-decoration: underline;
-        }
-
-        /* 主内容区域 */
-        .hero {
+            overflow: hidden; /* 禁用滚动 */
             display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
-            height: 100vh; /* 占满屏幕高度 */
-            padding: 20px;
+            height: 100vh; /* 全屏显示 */
         }
 
-        .hero .text-section {
-            flex: 1;
-            padding: 20px;
+        /* 容器布局 */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 左右布局 */
+            width: 90%;
+            max-width: 1200px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
         }
 
-        .hero .text-section h1 {
+        /* 左侧文字部分 */
+        .text-section {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(135deg, #fff1eb, #ace0f9);
+        }
+
+        .text-section h1 {
             font-size: 3rem;
-            margin-bottom: 15px;
-            color: #0077b5;
+            color: #333;
+            margin-bottom: 10px;
         }
 
-        .hero .text-section p {
+        .text-section p {
             font-size: 1.2rem;
+            color: #666;
             margin-bottom: 20px;
             line-height: 1.6;
         }
 
-        .hero .text-section a {
-            padding: 10px 20px;
-            background: #0077b5;
+        .text-section a {
+            padding: 12px 24px;
+            background: #ff758c;
             color: white;
+            font-size: 1rem;
             text-decoration: none;
             border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .hero .text-section a:hover {
-            background: #005582;
-        }
-
-        .hero .photo-section {
-            flex: 1;
             text-align: center;
+            transition: transform 0.3s, background-color 0.3s;
+            align-self: flex-start;
         }
 
-        .hero .photo-section img {
-            max-width: 80%;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        .text-section a:hover {
+            background: #e64a68;
+            transform: scale(1.05);
         }
 
-        /* 技能部分 */
-        .skills {
-            background: white;
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .skills h2 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            color: #0077b5;
-        }
-
-        .skills .skill-cards {
+        /* 右侧动态效果部分 */
+        .dynamic-section {
+            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .skills .card {
-            background: #f0f4f8;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 200px;
-            text-align: center;
+        .dynamic-section .circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            position: absolute;
+            animation: float 6s infinite ease-in-out;
         }
 
-        .skills .card i {
-            font-size: 3rem;
-            color: #0077b5;
-            margin-bottom: 10px;
+        .dynamic-section .circle:nth-child(2) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 60%;
+            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+            animation-delay: 2s;
         }
 
-        .skills .card h3 {
-            font-size: 1.2rem;
-            color: #333;
+        .dynamic-section .circle:nth-child(3) {
+            width: 120px;
+            height: 120px;
+            top: 70%;
+            left: 30%;
+            background: linear-gradient(135deg, #fad0c4, #ff9a9e);
+            animation-delay: 4s;
         }
 
-        /* 底部信息 */
-        .footer {
-            background: #0077b5;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
-        .footer p {
-            font-size: 1rem;
-        }
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr; /* 单列布局 */
+                height: 90%;
+            }
 
-        .footer a {
-            color: #ffdd57;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
+            .dynamic-section {
+                height: 300px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- 顶部导航栏 -->
-    <div class="navbar">
-        <h1>Laurie Li</h1>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
-
-    <!-- 主内容区域 -->
-    <div class="hero" id="about">
+    <div class="container">
+        <!-- 左侧内容 -->
         <div class="text-section">
-            <h1>Welcome to My Portfolio</h1>
-            <p>Hello! I'm Laurie, an aspiring full-stack developer with a passion for building user-friendly and efficient web applications. Let’s connect and collaborate!</p>
+            <h1>Hello, I'm Laurie!</h1>
+            <p>I am an aspiring full-stack developer, passionate about crafting user-friendly web applications. Let's connect and create something amazing together!</p>
             <a href="https://www.linkedin.com/in/your-linkedin-username" target="_blank">
                 <i class="fab fa-linkedin"></i> Connect on LinkedIn
             </a>
         </div>
-        <div class="photo-section">
-            <img src="https://i.pravatar.cc/400" alt="Laurie's photo">
+
+        <!-- 右侧动态部分 -->
+        <div class="dynamic-section">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
         </div>
     </div>
-
-    <!-- 技能部分 -->
-    <div class="skills" id="skills">
-        <h2>My Skills</h2>
-        <div class="skill-cards">
-            <div class="card">
-                <i class="fab fa-html5"></i>
-                <h3>HTML</h3>
-            </div>
-            <div class="card">
-                <i class="fab fa-css3-alt"></i>
-                <h3>CSS</h3>
-            </div>
-            <div class="card">
-                <i class="fab fa-js"></i>
-                <h3>JavaScript</h3>
-            </div>
-            <div class="card">
-                <i class="fab fa-react"></i>
-                <h3>React</h3>
-            </div>
-            <div class="card">
-                <i class="fab fa-node-js"></i>
-                <h3>Node.js</h3>
-            </div>
-        </div>
-    </div>
-
-    <!-- 底部信息 -->
-    <div class="footer" id="contact">
-        <p>📧 Email: <a href="mailto:laurie.fullstack@gmail.com">laurie.fullstack@gmail.com</a></p>
-        <p>🌐 Connect with me on <a href="https://www.linkedin.com/in/your-linkedin-username" target="_blank">LinkedIn</a></p>
-    </div>
-
 </body>
 </html>
