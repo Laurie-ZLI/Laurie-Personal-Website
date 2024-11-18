@@ -3,50 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laurie Li's Personal Website</title>
+    <title>Laurie Li - Full-Stack Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* 全局样式 */
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #f0f4f8, #d9e3f0);
-            color: #333;
+            box-sizing: border-box;
         }
 
-        .container {
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background: linear-gradient(135deg, #f7f9fc, #dce7f2);
+        }
+
+        /* 顶部导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #0077b5;
+            color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .navbar h1 {
+            font-size: 1.5rem;
+            display: inline-block;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: inline-block;
+            float: right;
+        }
+
+        .navbar ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .navbar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* 主内容区域 */
+        .hero {
             display: flex;
-            flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 50px auto;
-            background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        /* 左侧文字内容样式 */
-        .text-section {
-            flex: 1; /* 占据剩余空间 */
+            height: 100vh; /* 占满屏幕高度 */
             padding: 20px;
         }
 
-        .text-section h1 {
-            font-size: 2.5rem;
+        .hero .text-section {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .hero .text-section h1 {
+            font-size: 3rem;
             margin-bottom: 15px;
+            color: #0077b5;
         }
 
-        .text-section p {
+        .hero .text-section p {
             font-size: 1.2rem;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             line-height: 1.6;
         }
 
-        .text-section a {
-            display: inline-block;
-            margin-top: 15px;
+        .hero .text-section a {
             padding: 10px 20px;
             background: #0077b5;
             color: white;
@@ -55,62 +93,142 @@
             font-size: 1rem;
         }
 
-        .text-section a:hover {
+        .hero .text-section a:hover {
             background: #005582;
         }
 
-        /* 右侧图片样式 */
-        .photo-section {
-            flex: 0.9; /* 控制占据空间大小 */
+        .hero .photo-section {
+            flex: 1;
             text-align: center;
-            padding: 20px;
         }
 
-        .photo-section img {
-            max-width: 100%;
-            border-radius: 8px;
+        .hero .photo-section img {
+            max-width: 80%;
+            border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        /* 响应式布局 */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
+        /* 技能部分 */
+        .skills {
+            background: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
 
-            .text-section {
-                padding: 15px;
-            }
+        .skills h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #0077b5;
+        }
 
-            .photo-section {
-                padding: 15px;
-            }
+        .skills .skill-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .skills .card {
+            background: #f0f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            text-align: center;
+        }
+
+        .skills .card i {
+            font-size: 3rem;
+            color: #0077b5;
+            margin-bottom: 10px;
+        }
+
+        .skills .card h3 {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        /* 底部信息 */
+        .footer {
+            background: #0077b5;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .footer p {
+            font-size: 1rem;
+        }
+
+        .footer a {
+            color: #ffdd57;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 左侧文字部分 -->
+
+    <!-- 顶部导航栏 -->
+    <div class="navbar">
+        <h1>Laurie Li</h1>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div class="hero" id="about">
         <div class="text-section">
-            <h1>Hi, I'm Laurie!</h1>
-            <p>Welcome to my personal website. I'm an aspiring full-stack developer passionate about creating beautiful and interactive web applications.</p>
-            <p>Currently focusing on:</p>
-            <ul>
-                <li>JavaScript</li>
-                <li>React</li>
-                <li>Node.js</li>
-            </ul>
+            <h1>Welcome to My Portfolio</h1>
+            <p>Hello! I'm Laurie, an aspiring full-stack developer with a passion for building user-friendly and efficient web applications. Let’s connect and collaborate!</p>
             <a href="https://www.linkedin.com/in/your-linkedin-username" target="_blank">
-                <i class="fab fa-linkedin"></i> Connect with me on LinkedIn
+                <i class="fab fa-linkedin"></i> Connect on LinkedIn
             </a>
         </div>
-
-        <!-- 右侧照片部分（使用在线图片） -->
         <div class="photo-section">
-            <img src="https://i.pravatar.cc/300" alt="Laurie's photo">
+            <img src="https://i.pravatar.cc/400" alt="Laurie's photo">
         </div>
     </div>
+
+    <!-- 技能部分 -->
+    <div class="skills" id="skills">
+        <h2>My Skills</h2>
+        <div class="skill-cards">
+            <div class="card">
+                <i class="fab fa-html5"></i>
+                <h3>HTML</h3>
+            </div>
+            <div class="card">
+                <i class="fab fa-css3-alt"></i>
+                <h3>CSS</h3>
+            </div>
+            <div class="card">
+                <i class="fab fa-js"></i>
+                <h3>JavaScript</h3>
+            </div>
+            <div class="card">
+                <i class="fab fa-react"></i>
+                <h3>React</h3>
+            </div>
+            <div class="card">
+                <i class="fab fa-node-js"></i>
+                <h3>Node.js</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部信息 -->
+    <div class="footer" id="contact">
+        <p>📧 Email: <a href="mailto:laurie.fullstack@gmail.com">laurie.fullstack@gmail.com</a></p>
+        <p>🌐 Connect with me on <a href="https://www.linkedin.com/in/your-linkedin-username" target="_blank">LinkedIn</a></p>
+    </div>
+
 </body>
 </html>
