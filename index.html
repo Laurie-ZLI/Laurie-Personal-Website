@@ -17,19 +17,21 @@
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
             color: #333;
-            overflow: hidden; /* 禁用滚动 */
+            overflow: hidden; /* 禁止滚动 */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* 全屏显示 */
+            height: 100vh; /* 高度占满屏幕 */
         }
 
         /* 容器布局 */
         .container {
             display: grid;
             grid-template-columns: 1fr 1fr; /* 左右布局 */
+            gap: 10px;
             width: 90%;
             max-width: 1200px;
+            height: 90%; /* 在小屏幕设备上灵活调整高度 */
             background: white;
             border-radius: 16px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
@@ -38,21 +40,23 @@
 
         /* 左侧文字部分 */
         .text-section {
-            padding: 40px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             background: linear-gradient(135deg, #fff1eb, #ace0f9);
+            text-align: center;
         }
 
         .text-section h1 {
-            font-size: 3rem;
-            color: #333;
+            font-size: 2.5rem; /* 调整字体大小 */
             margin-bottom: 10px;
+            color: #333;
         }
 
         .text-section p {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #666;
             margin-bottom: 20px;
             line-height: 1.6;
@@ -65,9 +69,8 @@
             font-size: 1rem;
             text-decoration: none;
             border-radius: 5px;
-            text-align: center;
             transition: transform 0.3s, background-color 0.3s;
-            align-self: flex-start;
+            text-align: center;
         }
 
         .text-section a:hover {
@@ -117,15 +120,49 @@
             50% { transform: translateY(-20px); }
         }
 
-        /* 响应式调整 */
+        /* 响应式设计 */
         @media (max-width: 768px) {
+            body {
+                overflow: auto; /* 在小屏幕设备允许垂直滚动 */
+            }
+
             .container {
                 grid-template-columns: 1fr; /* 单列布局 */
-                height: 90%;
+                grid-template-rows: auto auto;
+                height: auto; /* 允许内容高度适应 */
+                width: 95%; /* 稍微增宽以适应小屏幕 */
+            }
+
+            .text-section {
+                padding: 15px;
+                align-items: center;
+            }
+
+            .text-section h1 {
+                font-size: 2rem;
+            }
+
+            .text-section p {
+                font-size: 0.9rem;
             }
 
             .dynamic-section {
-                height: 300px;
+                height: 250px; /* 限制动态效果的高度 */
+            }
+
+            .dynamic-section .circle {
+                width: 100px;
+                height: 100px;
+            }
+
+            .dynamic-section .circle:nth-child(2) {
+                width: 80px;
+                height: 80px;
+            }
+
+            .dynamic-section .circle:nth-child(3) {
+                width: 90px;
+                height: 90px;
             }
         }
     </style>
@@ -136,7 +173,7 @@
         <div class="text-section">
             <h1>Hello, I'm Laurie!</h1>
             <p>I am an aspiring full-stack developer, passionate about crafting user-friendly web applications. Let's connect and create something amazing together!</p>
-            <a href="https://www.linkedin.com/in/zhenyu-li-87661b165/" target="_blank">
+            <a href="https://www.linkedin.com/in/your-linkedin-username" target="_blank">
                 <i class="fab fa-linkedin"></i> Connect on LinkedIn
             </a>
         </div>
