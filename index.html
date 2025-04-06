@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Zhenyu Li - Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
@@ -14,8 +14,8 @@
       padding: 30px;
     }
     .container {
-      max-width: 1200px;
-      margin: 0 auto;
+      max-width: 900px;
+      margin: auto;
       background: #fff;
       border-radius: 20px;
       box-shadow: 0 15px 40px rgba(0,0,0,0.1);
@@ -23,9 +23,6 @@
     }
     .header {
       background: linear-gradient(135deg, #ffdee9, #b5fffc);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       text-align: center;
       padding: 50px 30px 80px;
       position: relative;
@@ -46,23 +43,9 @@
       opacity: 0.4;
       animation: float 8s ease-in-out infinite;
     }
-    .circle.one {
-      width: 200px; height: 200px;
-      background: #ffd6e0;
-      top: 20%; left: 10%;
-    }
-    .circle.two {
-      width: 140px; height: 140px;
-      background: #d4f1f9;
-      top: 60%; left: 70%;
-      animation-delay: 3s;
-    }
-    .circle.three {
-      width: 160px; height: 160px;
-      background: #ffe3b3;
-      top: 75%; left: 25%;
-      animation-delay: 6s;
-    }
+    .circle.one { width: 200px; height: 200px; background: #ffd6e0; top: 20%; left: 10%; }
+    .circle.two { width: 140px; height: 140px; background: #d4f1f9; top: 60%; left: 70%; animation-delay: 3s; }
+    .circle.three { width: 160px; height: 160px; background: #ffe3b3; top: 75%; left: 25%; animation-delay: 6s; }
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-20px); }
@@ -77,23 +60,9 @@
       padding: 10px 20px;
       border-radius: 8px;
       text-decoration: none;
-      transition: background 0.3s ease;
+      display: inline-block;
     }
     .header a:hover { background: #1a252f; }
-
-    .section {
-      padding: 40px;
-      border-top: 1px solid #eee;
-    }
-    .section h3 {
-      font-size: 1.6rem;
-      margin-bottom: 25px;
-      color: #2c3e50;
-    }
-    .item { margin-bottom: 20px; }
-    .item h4 { font-size: 1.1rem; margin-bottom: 5px; color: #444; }
-    .item .sub { font-size: 0.9rem; color: #777; margin-bottom: 5px; }
-    .item p { font-size: 0.95rem; line-height: 1.5; color: #555; }
 
     @media (max-width: 768px) {
       .header { padding: 40px 20px 60px; }
@@ -108,67 +77,12 @@
       <div class="circle one"></div>
       <div class="circle two"></div>
       <div class="circle three"></div>
-      <img src="profile.jpg" alt="Zhenyu Li" class="profile-pic">
+      <img src="https://uifaces.co/our-content/donated/xZ4wg2Xj.jpg" alt="Profile" class="profile-pic" />
       <h1>Zhenyu Li</h1>
-      <h2>Urban & Regional Planner | Landscape Architect | Aspiring Full-Stack Developer</h2>
-      <p>Permanent Resident | Macquarie Park, NSW, Australia | Bilingual (English & Mandarin)</p>
-      <p>Passionate about data-informed planning, resilient cities, and spatial design. Experienced in DAs, GIS, policy planning, and full-stack learning.</p>
+      <h2>Urban Planner | Landscape Architect | Full-Stack Learner</h2>
+      <p>Permanent Resident | Macquarie Park, NSW, Australia</p>
+      <p>Experienced in DAs, GIS, policy planning & sustainable urban design. Passionate about tech & data-informed decisions.</p>
       <a href="https://www.linkedin.com/in/zhenyu-li-87661b165/" target="_blank"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a>
-    </div>
-
-    <div class="section">
-      <h3>Professional Experience</h3>
-      <div class="item">
-        <h4>Landscape Architect & Urban Designer</h4>
-        <div class="sub">Terras Landscape Architects | Newcastle, NSW | 2022 – 2025</div>
-        <p>Led master planning and regional development projects, conducted spatial analysis and engaged councils on DAs, infrastructure, and landscape integration.</p>
-      </div>
-      <div class="item">
-        <h4>NSW Advocacy Committee Member</h4>
-        <div class="sub">AILA | Sydney, NSW | 2024 – Present</div>
-        <p>Advised on regional planning policy, advocated climate resilience, and contributed to large-scale strategic frameworks with cross-sector stakeholders.</p>
-      </div>
-      <div class="item">
-        <h4>Landscape Design Intern</h4>
-        <div class="sub">Instinct Fabrication | Shenzhen, China | 2019 – 2020</div>
-        <p>Supported design delivery for institutional and residential projects, refining 3D models and technical drawings.</p>
-      </div>
-      <div class="item">
-        <h4>Designer & Marketing Assistant</h4>
-        <div class="sub">BCCI Architecture Design | Shenzhen, China | 2017 – 2018</div>
-        <p>Organized public events, assisted in landscape modelling and youth outreach programs in urban design awareness.</p>
-      </div>
-    </div>
-
-    <div class="section">
-      <h3>Volunteer Experience</h3>
-      <div class="item">
-        <h4>Research Volunteer</h4>
-        <div class="sub">Yarra Pool Project | Melbourne | 2021 – 2022</div>
-        <p>Promoted environmental sustainability through public engagement, researched river health, and contributed to urban ecological reports.</p>
-      </div>
-    </div>
-
-    <div class="section">
-      <h3>Education</h3>
-      <div class="item">
-        <h4>Master of Urban Planning (In Progress)</h4>
-        <div class="sub">University of Technology Sydney (Online) | 2025 – 2026</div>
-      </div>
-      <div class="item">
-        <h4>Master of Landscape Architecture</h4>
-        <div class="sub">University of Melbourne | 2019 – 2022</div>
-        <p>Specialized in Indigenous landscapes, green infrastructure, and GIS analysis for sustainable urban development.</p>
-      </div>
-      <div class="item">
-        <h4>Bachelor of Urban & Regional Planning</h4>
-        <div class="sub">Southwest University, Chongqing | 2013 – 2017</div>
-      </div>
-    </div>
-
-    <div class="section">
-      <h3>Skills</h3>
-      <p>Urban Planning · Development Assessment · GIS & Spatial Analysis · Policy Design · Master Planning · Economic Geography · HTML · CSS · JavaScript (Learning) · ArcGIS · AutoCAD · Adobe Suite · Rhino · Bilingual (English, Mandarin)</p>
     </div>
   </div>
 </body>
