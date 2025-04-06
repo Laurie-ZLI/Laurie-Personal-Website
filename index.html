@@ -2,88 +2,121 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zhenyu Li - Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #fdfbfb, #ebedee);
-      color: #333;
-      padding: 30px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    html, body {
+      height: 100%;
+      width: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
       overflow: hidden;
     }
-    .header {
-      background: linear-gradient(135deg, #ffdee9, #b5fffc);
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
       text-align: center;
-      padding: 50px 30px 80px;
       position: relative;
+      padding: 20px;
     }
     .profile-pic {
-      width: 140px;
-      height: 140px;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
-      border: 5px solid #fff;
       object-fit: cover;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      margin-bottom: 25px;
       z-index: 2;
     }
-    .circle {
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #00ffff;
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: #b2fefa;
+    }
+    p {
+      max-width: 600px;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #d9faff;
+    }
+    a {
+      background: #00ffff;
+      color: #002b36;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 20px rgba(0, 255, 255, 0.4);
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    a:hover {
+      background: #00c6c6;
+      transform: scale(1.05);
+    }
+    .glow-circle {
       position: absolute;
       border-radius: 50%;
-      opacity: 0.4;
-      animation: float 8s ease-in-out infinite;
+      filter: blur(80px);
+      animation: float 6s ease-in-out infinite;
     }
-    .circle.one { width: 200px; height: 200px; background: #ffd6e0; top: 20%; left: 10%; }
-    .circle.two { width: 140px; height: 140px; background: #d4f1f9; top: 60%; left: 70%; animation-delay: 3s; }
-    .circle.three { width: 160px; height: 160px; background: #ffe3b3; top: 75%; left: 25%; animation-delay: 6s; }
+    .circle1 {
+      width: 300px;
+      height: 300px;
+      background: #00ffff;
+      top: 10%;
+      left: 15%;
+    }
+    .circle2 {
+      width: 200px;
+      height: 200px;
+      background: #ff00ff;
+      bottom: 15%;
+      right: 20%;
+      animation-delay: 2s;
+    }
+    .circle3 {
+      width: 250px;
+      height: 250px;
+      background: #00c3ff;
+      top: 65%;
+      left: 60%;
+      animation-delay: 4s;
+    }
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-20px); }
     }
-    .header h1 { font-size: 2.5rem; color: #2c3e50; margin-bottom: 10px; }
-    .header h2 { font-size: 1.2rem; color: #555; margin-bottom: 15px; }
-    .header p { max-width: 600px; margin: 0 auto 10px; line-height: 1.5; }
-    .header a {
-      margin-top: 15px;
-      background: #2c3e50;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .header a:hover { background: #1a252f; }
-
-    @media (max-width: 768px) {
-      .header { padding: 40px 20px 60px; }
-      .header h1 { font-size: 2rem; }
-      .header h2 { font-size: 1rem; }
-    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <div class="circle one"></div>
-      <div class="circle two"></div>
-      <div class="circle three"></div>
-      <img src="https://uifaces.co/our-content/donated/xZ4wg2Xj.jpg" alt="Profile" class="profile-pic" />
-      <h1>Zhenyu Li</h1>
-      <h2>Urban Planner | Landscape Architect | Full-Stack Learner</h2>
-      <p>Permanent Resident | Macquarie Park, NSW, Australia</p>
-      <p>Experienced in DAs, GIS, policy planning & sustainable urban design. Passionate about tech & data-informed decisions.</p>
-      <a href="https://www.linkedin.com/in/zhenyu-li-87661b165/" target="_blank"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a>
-    </div>
+  <div class="hero">
+    <div class="glow-circle circle1"></div>
+    <div class="glow-circle circle2"></div>
+    <div class="glow-circle circle3"></div>
+    <img src="https://uifaces.co/our-content/donated/xZ4wg2Xj.jpg" alt="Zhenyu Li" class="profile-pic" />
+    <h1>Zhenyu Li</h1>
+    <h2>Urban Planner • Landscape Architect • Full-Stack Learner</h2>
+    <p>Based in Macquarie Park, NSW • Passionate about sustainable design, GIS, data-driven planning and technology-enabled cities.</p>
+    <a href="https://www.linkedin.com/in/zhenyu-li-87661b165/" target="_blank">
+      <i class="fab fa-linkedin"></i> Connect on LinkedIn
+    </a>
   </div>
 </body>
 </html>
