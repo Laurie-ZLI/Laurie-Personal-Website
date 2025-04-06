@@ -9,7 +9,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #f0f4f8, #d9e4f5);
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
       color: #333;
       padding: 30px;
     }
@@ -17,149 +17,158 @@
       max-width: 1200px;
       margin: 0 auto;
       background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
       overflow: hidden;
     }
     .header {
+      background: linear-gradient(135deg, #ffdee9, #b5fffc);
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       align-items: center;
-      padding: 40px;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      text-align: center;
+      padding: 50px 30px 80px;
+      position: relative;
     }
     .profile-pic {
-      width: 150px;
-      height: 150px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
-      border: 4px solid #fff;
+      border: 5px solid #fff;
       object-fit: cover;
-      margin-right: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      z-index: 2;
     }
-    .header-info {
-      flex: 1;
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: float 8s ease-in-out infinite;
     }
-    .header-info h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      color: #2c3e50;
+    .circle.one {
+      width: 200px; height: 200px;
+      background: #ffd6e0;
+      top: 20%; left: 10%;
     }
-    .header-info h2 {
-      font-size: 1.2rem;
-      color: #555;
-      margin-bottom: 15px;
+    .circle.two {
+      width: 140px; height: 140px;
+      background: #d4f1f9;
+      top: 60%; left: 70%;
+      animation-delay: 3s;
     }
-    .header-info p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #444;
+    .circle.three {
+      width: 160px; height: 160px;
+      background: #ffe3b3;
+      top: 75%; left: 25%;
+      animation-delay: 6s;
     }
-    .header-info a {
-      display: inline-block;
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    .header h1 { font-size: 2.5rem; color: #2c3e50; margin-bottom: 10px; }
+    .header h2 { font-size: 1.2rem; color: #555; margin-bottom: 15px; }
+    .header p { max-width: 600px; margin: 0 auto 10px; line-height: 1.5; }
+    .header a {
       margin-top: 15px;
       background: #2c3e50;
-      color: white;
+      color: #fff;
       padding: 10px 20px;
+      border-radius: 8px;
       text-decoration: none;
-      border-radius: 6px;
+      transition: background 0.3s ease;
     }
+    .header a:hover { background: #1a252f; }
+
     .section {
       padding: 40px;
       border-top: 1px solid #eee;
     }
     .section h3 {
       font-size: 1.6rem;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       color: #2c3e50;
     }
-    .item {
-      margin-bottom: 20px;
-    }
-    .item h4 {
-      font-size: 1.1rem;
-      margin-bottom: 5px;
-      color: #444;
-    }
-    .item .sub {
-      font-size: 0.9rem;
-      color: #777;
-      margin-bottom: 5px;
-    }
-    .item p {
-      font-size: 0.95rem;
-      line-height: 1.5;
-      color: #555;
-    }
+    .item { margin-bottom: 20px; }
+    .item h4 { font-size: 1.1rem; margin-bottom: 5px; color: #444; }
+    .item .sub { font-size: 0.9rem; color: #777; margin-bottom: 5px; }
+    .item p { font-size: 0.95rem; line-height: 1.5; color: #555; }
+
     @media (max-width: 768px) {
-      .header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .profile-pic {
-        margin-bottom: 20px;
-      }
+      .header { padding: 40px 20px 60px; }
+      .header h1 { font-size: 2rem; }
+      .header h2 { font-size: 1rem; }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
+      <div class="circle one"></div>
+      <div class="circle two"></div>
+      <div class="circle three"></div>
       <img src="profile.jpg" alt="Zhenyu Li" class="profile-pic">
-      <div class="header-info">
-        <h1>Zhenyu Li</h1>
-        <h2>Landscape Architect & Full-Stack Developer</h2>
-        <p>Macquarie Park, NSW, Australia | UTC+10</p>
-        <p>Passionate about sustainable design and full-stack development, with 5+ years of experience in urban planning and interdisciplinary collaboration.</p>
-        <a href="https://www.linkedin.com/in/zhenyu-li-87661b165/" target="_blank"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a>
-      </div>
+      <h1>Zhenyu Li</h1>
+      <h2>Urban & Regional Planner | Landscape Architect | Aspiring Full-Stack Developer</h2>
+      <p>Permanent Resident | Macquarie Park, NSW, Australia | Bilingual (English & Mandarin)</p>
+      <p>Passionate about data-informed planning, resilient cities, and spatial design. Experienced in DAs, GIS, policy planning, and full-stack learning.</p>
+      <a href="https://www.linkedin.com/in/zhenyu-li-87661b165/" target="_blank"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a>
     </div>
 
     <div class="section">
-      <h3>Work Experience</h3>
+      <h3>Professional Experience</h3>
       <div class="item">
-        <h4>Landscape Architect - Terras Landscape Architects</h4>
-        <div class="sub">Newcastle, NSW, Australia | 2022 - 2025</div>
-        <p>Led and supported DA submissions across residential, commercial and infrastructure projects. Coordinated with clients and consultants to integrate landscape with architectural and engineering documentation.</p>
+        <h4>Landscape Architect & Urban Designer</h4>
+        <div class="sub">Terras Landscape Architects | Newcastle, NSW | 2022 – 2025</div>
+        <p>Led master planning and regional development projects, conducted spatial analysis and engaged councils on DAs, infrastructure, and landscape integration.</p>
       </div>
       <div class="item">
-        <h4>NSW Advocacy Committee Member - AILA</h4>
-        <div class="sub">Sydney, NSW, Australia | 2024 - Present</div>
-        <p>Advised on state-led advocacy initiatives and climate-related policies, enhancing the role of landscape architecture in policy making.</p>
+        <h4>NSW Advocacy Committee Member</h4>
+        <div class="sub">AILA | Sydney, NSW | 2024 – Present</div>
+        <p>Advised on regional planning policy, advocated climate resilience, and contributed to large-scale strategic frameworks with cross-sector stakeholders.</p>
       </div>
       <div class="item">
-        <h4>Urban Designer - Zhongwai International</h4>
-        <div class="sub">Shenzhen, China | 2017 - 2018</div>
-        <p>Contributed to urban design strategies for sustainable development, blending functionality and environmental resilience in project planning.</p>
+        <h4>Landscape Design Intern</h4>
+        <div class="sub">Instinct Fabrication | Shenzhen, China | 2019 – 2020</div>
+        <p>Supported design delivery for institutional and residential projects, refining 3D models and technical drawings.</p>
+      </div>
+      <div class="item">
+        <h4>Designer & Marketing Assistant</h4>
+        <div class="sub">BCCI Architecture Design | Shenzhen, China | 2017 – 2018</div>
+        <p>Organized public events, assisted in landscape modelling and youth outreach programs in urban design awareness.</p>
       </div>
     </div>
 
     <div class="section">
       <h3>Volunteer Experience</h3>
       <div class="item">
-        <h4>Landscape Architecture Intern - Instinct Fabrication</h4>
-        <div class="sub">Shenzhen, China | 2019 - 2020</div>
-        <p>Participated in diverse local landscape projects during studies. Gained hands-on experience in concept design and documentation.</p>
+        <h4>Research Volunteer</h4>
+        <div class="sub">Yarra Pool Project | Melbourne | 2021 – 2022</div>
+        <p>Promoted environmental sustainability through public engagement, researched river health, and contributed to urban ecological reports.</p>
       </div>
     </div>
 
     <div class="section">
       <h3>Education</h3>
       <div class="item">
-        <h4>JR Academy</h4>
-        <div class="sub">Boot Camp in Computer Science | Dec 2024 - Jun 2025</div>
+        <h4>Master of Urban Planning (In Progress)</h4>
+        <div class="sub">University of Technology Sydney (Online) | 2025 – 2026</div>
       </div>
       <div class="item">
-        <h4>University of Melbourne</h4>
-        <div class="sub">Master of Landscape Architecture | 2019 - 2021</div>
+        <h4>Master of Landscape Architecture</h4>
+        <div class="sub">University of Melbourne | 2019 – 2022</div>
+        <p>Specialized in Indigenous landscapes, green infrastructure, and GIS analysis for sustainable urban development.</p>
       </div>
       <div class="item">
-        <h4>Southwest University</h4>
-        <div class="sub">BSc in Human Geography & Urban-Regional Planning | 2013 - 2017</div>
+        <h4>Bachelor of Urban & Regional Planning</h4>
+        <div class="sub">Southwest University, Chongqing | 2013 – 2017</div>
       </div>
-      <div class="item">
-        <h4>Architectural Association Visiting School</h4>
-        <div class="sub">Bangkok | Dec 2019</div>
-      </div>
+    </div>
+
+    <div class="section">
+      <h3>Skills</h3>
+      <p>Urban Planning · Development Assessment · GIS & Spatial Analysis · Policy Design · Master Planning · Economic Geography · HTML · CSS · JavaScript (Learning) · ArcGIS · AutoCAD · Adobe Suite · Rhino · Bilingual (English, Mandarin)</p>
     </div>
   </div>
 </body>
