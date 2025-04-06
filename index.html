@@ -1,189 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laurie Li - Full-Stack Developer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* 全局样式 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zhenyu Li - Portfolio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
-            color: #333;
-            overflow: hidden; /* 禁止滚动 */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* 高度占满屏幕 */
-        }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #f0f4f8, #d9e4f5);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-        /* 容器布局 */
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* 左右布局 */
-            gap: 10px;
-            width: 90%;
-            max-width: 1200px;
-            height: 90%; /* 在小屏幕设备上灵活调整高度 */
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-        }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      padding: 30px;
+      max-width: 600px;
+      width: 100%;
+    }
 
-        /* 左侧文字部分 */
-        .text-section {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #fff1eb, #ace0f9);
-            text-align: center;
-        }
+    .card h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
 
-        .text-section h1 {
-            font-size: 2.5rem; /* 调整字体大小 */
-            margin-bottom: 10px;
-            color: #333;
-        }
+    .card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      font-weight: normal;
+      color: #555;
+    }
 
-        .text-section p {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
+    .card p {
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
 
-        .text-section a {
-            padding: 12px 24px;
-            background: #ff758c;
-            color: white;
-            font-size: 1rem;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: transform 0.3s, background-color 0.3s;
-            text-align: center;
-        }
+    .card a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #2c3e50;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
 
-        .text-section a:hover {
-            background: #e64a68;
-            transform: scale(1.05);
-        }
+    .card a:hover {
+      background: #1a252f;
+    }
 
-        /* 右侧动态效果部分 */
-        .dynamic-section {
-            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
+    .location {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 10px;
+    }
 
-        .dynamic-section .circle {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            position: absolute;
-            animation: float 6s infinite ease-in-out;
-        }
-
-        .dynamic-section .circle:nth-child(2) {
-            width: 100px;
-            height: 100px;
-            top: 20%;
-            left: 60%;
-            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
-            animation-delay: 2s;
-        }
-
-        .dynamic-section .circle:nth-child(3) {
-            width: 120px;
-            height: 120px;
-            top: 70%;
-            left: 30%;
-            background: linear-gradient(135deg, #fad0c4, #ff9a9e);
-            animation-delay: 4s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            body {
-                overflow: auto; /* 在小屏幕设备允许垂直滚动 */
-            }
-
-            .container {
-                grid-template-columns: 1fr; /* 单列布局 */
-                grid-template-rows: auto auto;
-                height: auto; /* 允许内容高度适应 */
-                width: 95%; /* 稍微增宽以适应小屏幕 */
-            }
-
-            .text-section {
-                padding: 15px;
-                align-items: center;
-            }
-
-            .text-section h1 {
-                font-size: 2rem;
-            }
-
-            .text-section p {
-                font-size: 0.9rem;
-            }
-
-            .dynamic-section {
-                height: 250px; /* 限制动态效果的高度 */
-            }
-
-            .dynamic-section .circle {
-                width: 100px;
-                height: 100px;
-            }
-
-            .dynamic-section .circle:nth-child(2) {
-                width: 80px;
-                height: 80px;
-            }
-
-            .dynamic-section .circle:nth-child(3) {
-                width: 90px;
-                height: 90px;
-            }
-        }
-    </style>
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid #ccc;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 左侧内容 -->
-        <div class="text-section">
-            <h1>Hello, I'm Laurie!</h1>
-            <p>I am an aspiring full-stack developer, passionate about crafting user-friendly web applications. Let's connect and create something amazing together!</p>
-            <a href="https://www.linkedin.com/in/zhenyu-li-87661b165/" target="_blank">
-                <i class="fab fa-linkedin"></i> Connect on LinkedIn
-            </a>
-        </div>
-
-        <!-- 右侧动态部分 -->
-        <div class="dynamic-section">
-            <div class="circle"></div>
-            <div class="circle"></div>
-            <div class="circle"></div>
-        </div>
-    </div>
+  <div class="card">
+    <img src="profile.jpg" alt="Zhenyu Li's profile picture" class="profile-pic">
+    <h1>Zhenyu Li</h1>
+    <h2>Landscape Architect & Full-Stack Developer</h2>
+    <p class="location">Macquarie Park, NSW, Australia (UTC+10)</p>
+    <p>Landscape Architect with a passion for sustainable and inspiring spaces. 5+ years experience in urban planning, design, and full-stack development. Skilled in client coordination, project management, and interdisciplinary teamwork. Currently exploring opportunities at the intersection of landscape, planning, and technology.</p>
+    <a href="https://www.linkedin.com/in/zhenyu-li-87661b165/" target="_blank">Connect on LinkedIn</a>
+  </div>
 </body>
 </html>
