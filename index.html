@@ -3,120 +3,379 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zhenyu Li - Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <title>Laurie Li | Urban Planner</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root{
+      --bg-1: #0b1216;
+      --bg-2: #0f1a20;
+      --bg-3: #12262a;
+      --text: #e7eef0;
+      --muted: #a9bcc2;
+      --accent: #4cc9f0;
+      --accent-soft: rgba(76,201,240,0.18);
+      --card: rgba(255,255,255,0.04);
+      --stroke: rgba(255,255,255,0.08);
+      --shadow: 0 10px 40px rgba(0,0,0,0.45);
+      --radius: 18px;
     }
-    html, body {
-      height: 100%;
-      width: 100%;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      overflow: hidden;
+
+    *{ box-sizing: border-box; margin:0; padding:0; }
+    html, body{
+      height:100%;
+      width:100%;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1150px 780px at 8% 8%, #0f3137 0%, transparent 60%),
+        radial-gradient(900px 700px at 85% 82%, #1a2340 0%, transparent 55%),
+        linear-gradient(160deg, var(--bg-1), var(--bg-2), var(--bg-3));
     }
-    .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      text-align: center;
+    body{ overflow-x:hidden; }
+
+    .page{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: clamp(18px, 4vw, 40px);
       position: relative;
-      padding: 20px;
+      isolation: isolate;
     }
-    .profile-pic {
-      width: 160px;
-      height: 160px;
+
+    /* subtle blur blobs */
+    .blob{
+      position:absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 999px;
+      filter: blur(90px);
+      opacity: 0.5;
+      z-index:-1;
+      animation: float 10s ease-in-out infinite;
+      transform: translateZ(0);
+      pointer-events:none;
+    }
+    .blob.b1{ background: #1b6f7b; top: 6%; left: 5%; }
+    .blob.b2{ background: #3b2a7a; bottom: 6%; right: 7%; animation-delay: 2.5s; width: 420px; height: 420px;}
+    .blob.b3{ background: #0b5f85; top: 58%; left: 62%; animation-delay: 5s; width: 300px; height: 300px;}
+
+    @keyframes float{
+      0%,100%{ transform: translateY(0px); }
+      50%{ transform: translateY(-18px); }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .blob{ animation: none; }
+      .cta, .ghost{ transition: none; }
+    }
+
+    .hero{
+      width: min(980px, 100%);
+      display:grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(16px, 3vw, 28px);
+      align-items:center;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: calc(var(--radius) + 6px);
+      padding: clamp(18px, 3.5vw, 34px);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+    @media (max-width: 860px){
+      .hero{ grid-template-columns: 1fr; text-align: center; }
+      .actions{ justify-content:center; }
+      .meta{ justify-content:center; }
+    }
+
+    .profile{
+      display:flex;
+      align-items:center;
+      gap: 16px;
+    }
+    @media (max-width: 860px){
+      .profile{ justify-content:center; }
+    }
+
+    .avatar-wrap{
+      position: relative;
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      padding: 4px;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(76,201,240,0.9), transparent 55%),
+        radial-gradient(circle at 80% 85%, rgba(168,230,207,0.8), transparent 50%),
+        linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
+      box-shadow: 0 0 0 6px rgba(255,255,255,0.02);
+    }
+
+    .avatar{
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-      margin-bottom: 25px;
-      z-index: 2;
+      border: 1px solid var(--stroke);
+      background: #0e161b;
+      /* subtle pro-grade treatment */
+      filter: contrast(1.02) saturate(1.03);
     }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      color: #00ffff;
+
+    .name{
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      letter-spacing: 0.2px;
+      font-weight: 700;
+      line-height: 1.1;
     }
-    h2 {
-      font-size: 1.4rem;
-      margin-bottom: 20px;
-      color: #b2fefa;
+    .name small{
+      display:block;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-top: 6px;
     }
-    p {
-      max-width: 600px;
+
+    .title{
+      margin-top: 16px;
+      font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+      font-weight: 600;
+      color: #d9f6ff;
+    }
+    .title span{
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .summary{
+      margin-top: 12px;
+      color: var(--muted);
+      line-height: 1.7;
       font-size: 1rem;
+      max-width: 58ch;
+    }
+    @media (max-width: 860px){
+      .summary{ margin-left:auto; margin-right:auto; }
+    }
+
+    .meta{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .meta-item{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      padding: 6px 10px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--stroke);
+      border-radius: 999px;
+    }
+    .meta-item i{ color: var(--accent); }
+
+    .actions{
+      margin-top: 18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+    }
+
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--accent), #6ee7ff);
+      color:#041218;
+      text-decoration:none;
+      font-weight: 700;
+      padding: 12px 16px;
+      border-radius: 999px;
+      box-shadow: 0 8px 26px rgba(76,201,240,0.35);
+      transform: translateY(0);
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+      white-space:nowrap;
+    }
+    .cta:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(76,201,240,0.45);
+      filter: saturate(1.1);
+    }
+
+    .ghost{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      color: var(--text);
+      text-decoration:none;
+      font-weight: 600;
+      padding: 11px 15px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.02);
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      white-space:nowrap;
+    }
+    .ghost:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.16);
+    }
+
+    .panel{
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      padding: 16px;
+      display:grid;
+      gap: 12px;
+    }
+
+    .panel h3{
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .panel h3::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent-soft);
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+    }
+    .tag{
+      font-size: 0.9rem;
+      color: #cfe6ec;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px dashed rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .note{
+      color: var(--muted);
+      font-size: 0.95rem;
       line-height: 1.6;
-      margin-bottom: 30px;
-      color: #d9faff;
     }
-    a {
-      background: #00ffff;
-      color: #002b36;
-      padding: 12px 24px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 20px rgba(0, 255, 255, 0.4);
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
-    a:hover {
-      background: #00c6c6;
-      transform: scale(1.05);
-    }
-    .glow-circle {
+
+    footer{
       position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      animation: float 6s ease-in-out infinite;
-    }
-    .circle1 {
-      width: 300px;
-      height: 300px;
-      background: #00ffff;
-      top: 10%;
-      left: 15%;
-    }
-    .circle2 {
-      width: 200px;
-      height: 200px;
-      background: #ff00ff;
-      bottom: 15%;
-      right: 20%;
-      animation-delay: 2s;
-    }
-    .circle3 {
-      width: 250px;
-      height: 250px;
-      background: #00c3ff;
-      top: 65%;
-      left: 60%;
-      animation-delay: 4s;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
+      bottom: 14px;
+      width: 100%;
+      text-align:center;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.9rem;
+      pointer-events:none;
     }
   </style>
 </head>
+
 <body>
-  <div class="hero">
-    <div class="glow-circle circle1"></div>
-    <div class="glow-circle circle2"></div>
-    <div class="glow-circle circle3"></div>
-    <img src="uifaces-cartoon-image.jpg" alt="Zhenyu Li" class="profile-pic" />
-    <h1>Zhenyu Li</h1>
-    <h2>Urban Planner • Landscape Architect • Full-Stack Learner</h2>
-    <p>Based in Macquarie Park, NSW • Passionate about sustainable design, GIS, data-driven planning and technology-enabled cities.</p>
-    <a href="https://www.linkedin.com/in/zhenyu-li-87661b165/" target="_blank">
-      <i class="fab fa-linkedin"></i> Connect on LinkedIn
-    </a>
-  </div>
+  <main class="page">
+    <!-- background blobs -->
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+
+    <section class="hero" aria-label="Hero">
+      <!-- left -->
+      <div>
+        <div class="profile">
+          <div class="avatar-wrap">
+            <!-- put the colorized headshot here -->
+            <img src="https://github.com/Laurie-ZLI/Laurie-Personal-Website/blob/main/Zhenyu_li.jpg" alt="Portrait of Laurie Li" class="avatar" />
+          </div>
+          <div>
+            <div class="name">
+              Laurie Li
+              <small>Zhenyu Li · 李振宇</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="title">
+          Urban Planner <span>•</span> Landscape Architect <span>•</span> AI × Green Infrastructure
+        </div>
+
+        <p class="summary">
+          Based in Sydney, NSW. Working at the intersection of statutory planning, green infrastructure,
+          and data-informed urban resilience. Currently undertaking Master of Planning studies and seeking
+          student/graduate pathways within local government or consulting.
+        </p>
+
+        <div class="meta" role="list">
+          <div class="meta-item" role="listitem">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Macquarie Park, Sydney NSW</span>
+          </div>
+          <div class="meta-item" role="listitem">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Nature-based Solutions · WSUD · Urban Ecology</span>
+          </div>
+          <div class="meta-item" role="listitem">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>GIS · Spatial Analysis · Python</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="cta" href="https://www.linkedin.com/in/zhenyu-li-laurie/" target="_blank" rel="noopener">
+            <i class="fa-brands fa-linkedin"></i>
+            Connect on LinkedIn
+          </a>
+          <a class="ghost" href="mailto:laurie.geolab@gmail.com">
+            <i class="fa-regular fa-envelope"></i>
+            laurie.geolab@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <!-- right -->
+      <aside class="panel" aria-label="Focus areas">
+        <h3>Current Focus</h3>
+        <div class="tags">
+          <div class="tag">Statutory Planning</div>
+          <div class="tag">Development Assessment</div>
+          <div class="tag">Contributions & Funding</div>
+          <div class="tag">Green Infrastructure</div>
+          <div class="tag">Climate Adaptation</div>
+          <div class="tag">AI-Enabled Planning</div>
+          <div class="tag">Urban Ecology</div>
+        </div>
+        <p class="note">
+          This site is currently a professional landing page for applications.
+          Full portfolio content will be added progressively.
+        </p>
+      </aside>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Laurie Li · Sydney NSW
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
