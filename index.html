@@ -18,14 +18,18 @@
       --bg-1: #0b1216;
       --bg-2: #0f1a20;
       --bg-3: #12262a;
+
       --text: #e7eef0;
       --muted: #a9bcc2;
+
       --accent: #4cc9f0;
       --accent-soft: rgba(76,201,240,0.18);
+
       --card: rgba(255,255,255,0.04);
       --stroke: rgba(255,255,255,0.08);
-      --shadow: 0 10px 40px rgba(0,0,0,0.45);
+
       --radius: 18px;
+      --shadow: 0 10px 40px rgba(0,0,0,0.45);
     }
 
     *{ box-sizing: border-box; margin:0; padding:0; }
@@ -51,7 +55,7 @@
       isolation: isolate;
     }
 
-    /* subtle blur blobs */
+    /* background blobs */
     .blob{
       position:absolute;
       width: 380px;
@@ -73,8 +77,8 @@
       50%{ transform: translateY(-18px); }
     }
     @media (prefers-reduced-motion: reduce){
-      .blob{ animation: none; }
-      .cta, .ghost{ transition: none; }
+      .blob{ animation:none; }
+      .cta, .ghost{ transition:none; }
     }
 
     .hero{
@@ -83,6 +87,7 @@
       grid-template-columns: 1.15fr 0.85fr;
       gap: clamp(16px, 3vw, 28px);
       align-items:center;
+
       background: var(--card);
       border: 1px solid var(--stroke);
       border-radius: calc(var(--radius) + 6px);
@@ -91,41 +96,51 @@
       backdrop-filter: blur(8px);
     }
     @media (max-width: 860px){
-      .hero{ grid-template-columns: 1fr; text-align: center; }
-      .actions{ justify-content:center; }
-      .meta{ justify-content:center; }
+      .hero{ grid-template-columns: 1fr; text-align:center; }
+      .actions, .meta{ justify-content:center; }
     }
 
+    /* profile row */
     .profile{
       display:flex;
       align-items:center;
       gap: 16px;
+      min-width: 0;
     }
     @media (max-width: 860px){
       .profile{ justify-content:center; }
     }
 
+    /* avatar: background-image approach (layout never breaks) */
     .avatar-wrap{
-      position: relative;
-      width: 104px;
-      height: 104px;
-      border-radius: 50%;
+      --avatar-url: url("./Zhenyu_li.jpg"); /* <<< 换头像只改这里 */
+      width: 108px;
+      height: 108px;
+      border-radius: 999px;
       padding: 4px;
+      flex-shrink: 0;
+      position: relative;
+
       background:
         radial-gradient(circle at 30% 20%, rgba(76,201,240,0.9), transparent 55%),
         radial-gradient(circle at 80% 85%, rgba(168,230,207,0.8), transparent 50%),
         linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
+
       box-shadow: 0 0 0 6px rgba(255,255,255,0.02);
     }
 
     .avatar{
       width: 100%;
       height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
+      border-radius: 999px;
       border: 1px solid var(--stroke);
-      background: #0e161b;
-      /* subtle pro-grade treatment */
+      background-color: #0e161b;
+      background-image: var(--avatar-url);
+      background-size: cover;
+      background-position: center 35%;
+      background-repeat: no-repeat;
+
+      /* subtle professional finishing */
       filter: contrast(1.02) saturate(1.03);
     }
 
@@ -134,6 +149,7 @@
       letter-spacing: 0.2px;
       font-weight: 700;
       line-height: 1.1;
+      white-space: nowrap;
     }
     .name small{
       display:block;
@@ -141,6 +157,7 @@
       font-weight: 500;
       color: var(--muted);
       margin-top: 6px;
+      white-space: normal;
     }
 
     .title{
@@ -149,10 +166,7 @@
       font-weight: 600;
       color: #d9f6ff;
     }
-    .title span{
-      color: var(--muted);
-      font-weight: 500;
-    }
+    .title span{ color: var(--muted); font-weight: 500; }
 
     .summary{
       margin-top: 12px;
@@ -292,7 +306,6 @@
 
 <body>
   <main class="page">
-    <!-- background blobs -->
     <div class="blob b1"></div>
     <div class="blob b2"></div>
     <div class="blob b3"></div>
@@ -301,10 +314,10 @@
       <!-- left -->
       <div>
         <div class="profile">
-          <div class="avatar-wrap">
-            <!-- put the colorized headshot here -->
-            <img src="https://github.com/Laurie-ZLI/Laurie-Personal-Website/blob/main/Zhenyu_li.jpg" alt="Portrait of Laurie Li" class="avatar" />
+          <div class="avatar-wrap" role="img" aria-label="Portrait of Laurie Li">
+            <div class="avatar"></div>
           </div>
+
           <div>
             <div class="name">
               Laurie Li
@@ -343,6 +356,7 @@
             <i class="fa-brands fa-linkedin"></i>
             Connect on LinkedIn
           </a>
+
           <a class="ghost" href="mailto:laurie.geolab@gmail.com">
             <i class="fa-regular fa-envelope"></i>
             laurie.geolab@gmail.com
