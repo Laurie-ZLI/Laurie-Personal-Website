@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">\n  <meta name="description" content="A reflection on development assessment after one semester of City Planning at UNSW.">\n  <meta property="og:title" content="A Development Assessment Framework, One Semester In">\n  <meta property="og:description" content="A reflection on development assessment after one semester of City Planning at UNSW.">\n  <meta property="og:image" content="https://zhenyuli.com/development-assessment-framework/framework-preview.png">\n  <meta property="og:image:width" content="1200">\n  <meta property="og:image:height" content="627">\n  <meta property="og:url" content="https://zhenyuli.com/development-assessment-framework/">\n  <meta property="og:type" content="website">
+  <title>A Development Assessment Framework, One Semester In</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root { --navy:#0F2A47; --panel:#EDF2F8; --red:#E2492C; --green:#2F6B4F; --cream:#FBF3E2; --bg:#F8FAFC; }
+    html, body { margin:0; min-height:100%; background:#dfe6ee; }
+    body { display:flex; justify-content:center; padding:24px; font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--navy); }
+    .canvas { position:relative; width:1080px; height:1350px; flex:0 0 1080px; overflow:hidden; background:var(--bg); padding:44px 64px 0; box-shadow:0 10px 40px rgba(15,42,71,.12); }
+    h1 { margin:0; text-align:center; font-size:40px; line-height:1.08; letter-spacing:-1.1px; font-weight:800; }
+    .flow { position:relative; height:1129px; margin-top:31px; z-index:1; }
+    .step { position:absolute; left:112px; width:728px; min-height:82px; border-radius:17px; display:grid; grid-template-columns:70px 1px 1fr 42px; align-items:center; gap:16px; padding:13px 20px; background:var(--panel); color:var(--navy); z-index:2; }
+    .step.dark { background:var(--navy); color:white; }
+    .num { width:48px; height:48px; border:2px solid currentColor; border-radius:50%; display:grid; place-items:center; font-size:15px; font-weight:800; letter-spacing:.8px; }
+    .divider { width:1px; height:48px; background:currentColor; opacity:.3; }
+    .copy h2 { margin:0 0 4px; font-size:17px; line-height:1; letter-spacing:1.2px; }
+    .copy p { margin:0; font-size:14px; line-height:1.35; font-weight:500; }
+    .copy .small { margin-top:4px; font-size:11.5px; opacity:.82; }
+    .copy .italic { margin-top:2px; font-size:12px; font-style:italic; }
+    .icon { width:34px; height:34px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    #s1{top:0} #s2{top:101px} #s3{top:202px} #s4{top:303px;min-height:130px} #s5{top:452px;min-height:82px}
+    .tests { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:10px; }
+    .tests span { border:1px solid rgba(255,255,255,.72); border-radius:7px; padding:6px 4px; font-size:10.5px; text-align:center; white-space:nowrap; }
+    .right-step { left:508px; width:422px; grid-template-columns:54px 1px 1fr 33px; gap:12px; padding:12px 15px; }
+    .right-step .num { width:42px; height:42px; font-size:13px; }
+    .right-step .divider { height:43px; }
+    .right-step .copy h2 { font-size:15px; }
+    .right-step .copy p { font-size:12.3px; }
+    .right-step .icon { width:29px;height:29px; }
+    #s6{top:650px;min-height:102px} #s7{top:786px;min-height:116px} #s8{top:944px;min-height:82px}
+    .branch-label { position:absolute; z-index:3; font-size:11px; font-weight:900; letter-spacing:1px; background:var(--bg); padding:2px 6px; }
+    .yes-main { top:555px; left:698px; color:var(--green); }
+    .no-main { top:555px; left:246px; color:var(--red); }
+    .pill { position:absolute; top:584px; left:624px; width:190px; height:36px; border:1.5px dashed var(--green); border-radius:18px; display:grid; place-items:center; color:var(--green); font-size:12px; font-weight:700; z-index:2; background:var(--bg); }
+    .question { position:absolute; top:580px; left:22px; width:386px; height:58px; border:1px solid #ddcfad; border-radius:12px; display:grid; place-items:center; padding:8px 20px; background:var(--cream); text-align:center; font-size:13px; line-height:1.25; font-weight:800; z-index:2; }
+    .mini-label { position:absolute; top:655px; z-index:3; font-size:10.5px; font-weight:900; letter-spacing:1px; background:var(--bg); padding:1px 5px; }
+    .mini-yes { left:83px; color:var(--green); } .mini-no { left:304px; color:var(--red); }
+    .seek { position:absolute; top:680px; left:0; width:190px; height:66px; border:1.5px solid #8eb7a2; border-radius:12px; background:#E8F3EC; color:var(--green); display:grid; place-items:center; padding:8px 14px; text-align:center; font-size:12.5px; font-weight:750; line-height:1.25; z-index:2; }
+    .insufficient { position:absolute; top:680px; left:210px; width:218px; height:139px; border:1.5px solid #e8a293; border-radius:12px; background:#FCEDEA; color:var(--red); padding:13px 14px; font-size:11.5px; line-height:1.28; z-index:2; }
+    .warning { display:flex; align-items:center; gap:8px; font-weight:700; }
+    .warning svg { width:23px; height:23px; stroke:var(--red); fill:none; stroke-width:1.8; }
+    .red-rule { border:0; border-top:1.5px dashed var(--red); margin:10px 0 8px; }
+    .record { font-weight:850; }
+    .back-label { position:absolute; top:777px; left:13px; color:var(--green); background:var(--bg); padding:2px 5px; font-size:10.5px; font-weight:800; z-index:3; }
+    .arrows { position:absolute; inset:0; width:100%; height:100%; overflow:visible; z-index:1; pointer-events:none; }
+    .arrow { fill:none; stroke:var(--navy); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; marker-end:url(#arrowNavy); }
+    .green { stroke:var(--green); marker-end:url(#arrowGreen); }
+    .red { stroke:var(--red); marker-end:url(#arrowRed); }
+    footer { position:absolute; left:0; bottom:0; width:100%; height:118px; background:var(--cream); display:grid; grid-template-columns:1.35fr 1px .9fr; align-items:center; padding:22px 64px; gap:28px; }
+    footer .rule { height:70px; background:#c9b995; }
+    .footer-left { display:flex; align-items:center; gap:20px; font-size:15px; line-height:1.36; font-weight:800; }
+    .footer-right { display:flex; align-items:center; gap:17px; font-size:14px; line-height:1.5; }
+    footer svg { width:40px; height:40px; flex:none; stroke:var(--navy); fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+  </style>
+</head>
+<body>
+<main class="canvas" aria-label="Development assessment framework flowchart">
+  <h1>A Development Assessment Framework,<br>One Semester In</h1>
+  <section class="flow">
+    <svg class="arrows" viewBox="0 0 952 1129" aria-hidden="true">
+      <defs>
+        <marker id="arrowNavy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0F2A47"/></marker>
+        <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2F6B4F"/></marker>
+        <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#E2492C"/></marker>
+      </defs>
+      <path class="arrow" d="M476 82 V97"/><path class="arrow" d="M476 183 V198"/><path class="arrow" d="M476 284 V299"/><path class="arrow" d="M476 433 V448"/>
+      <path class="arrow green" d="M476 534 V552 H719 V580"/><path class="arrow green" d="M719 620 V646"/>
+      <path class="arrow red" d="M476 534 V552 H215 V576"/>
+      <path class="arrow green" d="M215 638 V650 H95 V676"/><path class="arrow red" d="M215 638 V650 H319 V676"/>
+      <path class="arrow green" d="M95 746 V770 H-28 V243 H108"/>
+      <path class="arrow" d="M719 752 V782"/><path class="arrow" d="M719 902 V940"/>
+      <path class="arrow red" d="M428 750 H466 V844 H504"/>
+    </svg>
+
+    <article class="step" id="s1"><div class="num">01</div><div class="divider"></div><div class="copy"><h2>UNDERSTAND</h2><p>What is proposed, where, and through what approval pathway?</p></div><svg class="icon" viewBox="0 0 32 32"><circle cx="13" cy="13" r="7"/><path d="m18.5 18.5 7 7"/></svg></article>
+    <article class="step" id="s2"><div class="num">02</div><div class="divider"></div><div class="copy"><h2>CHECK</h2><p>Has the required information been provided?</p></div><svg class="icon" viewBox="0 0 32 32"><path d="M10 6H7v22h18V6h-3M11 4h10v5H11zM10 15l2 2 4-4M18 15h4M10 22l2 2 4-4M18 22h4"/></svg></article>
+    <article class="step" id="s3"><div class="num">03</div><div class="divider"></div><div class="copy"><h2>GATHER</h2><p>Planning controls · drawings · technical reports · referral advice · submissions · site context</p></div><svg class="icon" viewBox="0 0 32 32"><path d="M3 9h10l3 3h13l-3 14H6z"/></svg></article>
+    <article class="step dark" id="s4"><div class="num">04</div><div class="divider"></div><div class="copy"><h2>TEST</h2><p>Do they tell the same story?</p><div class="tests"><span>Written material</span><span>Drawings</span><span>Technical reports</span><span>Site / context</span></div></div><svg class="icon" viewBox="0 0 32 32"><circle cx="13" cy="13" r="7"/><path d="m18.5 18.5 7 7M9 13l2.5 2.5L16 10"/></svg></article>
+    <article class="step dark" id="s5"><div class="num">05</div><div class="divider"></div><div class="copy"><h2>ENOUGH EVIDENCE?</h2><p>Can I make a reliable assessment finding?</p></div><svg class="icon" viewBox="0 0 32 32"><path d="M15 28V5M15 7H5l3 4-3 4h10M17 12h10l-3 4 3 4H17"/></svg></article>
+
+    <span class="branch-label no-main">NO</span><span class="branch-label yes-main">YES</span>
+    <div class="question">Can further information resolve the issue?</div><div class="pill">Findings established</div>
+    <span class="mini-label mini-yes">YES</span><span class="mini-label mini-no">NO</span>
+    <div class="seek">Seek clarification or further information</div>
+    <div class="insufficient"><div class="warning"><svg viewBox="0 0 24 24"><path d="M12 3 22 21H2zM12 9v5M12 18h.01"/></svg><span>Evidence remains insufficient</span></div><hr class="red-rule"><div class="record">Record the finding: compliance has not been demonstrated</div></div>
+    <span class="back-label">back to GATHER</span>
+
+    <article class="step right-step" id="s6"><div class="num">06</div><div class="divider"></div><div class="copy"><h2>RESOLVE</h2><p>Can identified issues be clarified, addressed through amendments, or appropriately managed?</p><p class="small">Clarification · amended plans or information · conditions where appropriate</p></div><svg class="icon" viewBox="0 0 32 32"><path d="M5 8h22M5 16h22M5 24h22M11 5v6M21 13v6M14 21v6"/></svg></article>
+    <article class="step right-step" id="s7"><div class="num">07</div><div class="divider"></div><div class="copy"><h2>EVALUATE</h2><p>Consider the application on its merits under the relevant planning framework</p><p class="italic">including the relevant s4.15 considerations</p><p class="small">Impacts · site suitability · submissions · public interest</p></div><svg class="icon" viewBox="0 0 32 32"><path d="M16 4v23M9 28h14M5 9h22M9 9l-5 9h10zM23 9l-5 9h10z"/></svg></article>
+    <article class="step right-step" id="s8"><div class="num">08</div><div class="divider"></div><div class="copy"><h2>DECIDE</h2><p>Reach a clear, evidence-based and defensible recommendation.</p></div><svg class="icon" viewBox="0 0 32 32"><path d="M11 5h10v8l4 5v3H7v-3l4-5zM6 25h20v3H6z"/></svg></article>
+  </section>
+  <footer>
+    <div class="footer-left"><svg viewBox="0 0 40 40"><path d="M14 27h12M15 31h10M17 35h6M20 4a11 11 0 0 0-7 19c2 2 2 4 2 4h10s0-2 2-4A11 11 0 0 0 20 4z"/></svg><div>The planning framework tells me what to test.<br>Evidence tells me what I can conclude.<br>Judgement connects the two.</div></div>
+    <div class="rule"></div>
+    <div class="footer-right"><svg viewBox="0 0 40 40"><path d="M5 15h30L20 5zM8 17v14M15 17v14M25 17v14M32 17v14M5 32h30M3 36h34"/></svg><div>Development Assessment<br>· Master of City Planning, UNSW</div></div>
+  </footer>
+</main>
+</body>
+</html>
+
